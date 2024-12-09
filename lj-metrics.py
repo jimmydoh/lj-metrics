@@ -4,8 +4,8 @@ from time import sleep
 
 from ping3 import ping
 
-INTERVAL = 30
-DESTINATION = "1.1.1.1"
+INTERVAL = os.environ.get("PING_INTERVAL",30)
+DESTINATION = os.environ.get("PING_DESTINATION","1.1.1.1")
 
 count = 0
 header = f"Pinging {DESTINATION} every {INTERVAL} secs"
