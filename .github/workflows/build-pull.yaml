@@ -1,4 +1,4 @@
-name: Docker Build
+name: Build on Pull
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -17,8 +17,8 @@ env:
 
 
 jobs:
-  build:
-
+  build-on-pull:
+    name: Build on main branch pull
     runs-on: ubuntu-latest
     permissions:
       contents: read
