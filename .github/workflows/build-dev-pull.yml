@@ -46,4 +46,4 @@ jobs:
 
       - name: Test build
         run: |
-          docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
+          docker run --env COUNT=1 --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
