@@ -12,7 +12,7 @@ count = 0
 header = f"Pinging {DESTINATION} every {INTERVAL} secs"
 print(header)
 
-while count < TOTAL_COUNT:
+while TOTAL_COUNT = 0 or count < TOTAL_COUNT:
     count += 1
     latency = ping(DESTINATION)
 

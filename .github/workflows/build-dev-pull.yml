@@ -1,4 +1,4 @@
-name: Build 'dev' on Pull
+name: dev Pull
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -18,7 +18,7 @@ env:
 
 jobs:
   build-dev:
-    name: Build on dev branch
+    name: Test Build on 'dev' Pull
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -46,4 +46,4 @@ jobs:
 
       - name: Test build
         run: |
-          docker run --env COUNT=1 --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
+          docker run --env PING_COUNT=1 --env PING_INTERVAL=1 --env PING_DESTINATION=localhost --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
