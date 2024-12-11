@@ -1,5 +1,9 @@
 FROM python:3.9.21-alpine
 
+LABEL org.opencontainers.image.source=https://github.com/jimmydoh/lj-metrics
+LABEL org.opencontainers.image.description="LJ Metrics test app"
+LABEL org.opencontainers.image.licenses=Unlicense
+
 # upgrade pip
 RUN pip install --upgrade pip
 
