@@ -8,8 +8,6 @@ name: Build Dev
 on:
   push:
     branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -52,9 +50,19 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: type=ref,event=branch
 
-      - name: Build and push Docker image
+      - name: Build for testing
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
+
+      - name: Test build
+        run: |
+          docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
+
+      - name: Build final images
         id: build-and-push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
