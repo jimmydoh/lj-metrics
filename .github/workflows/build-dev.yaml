@@ -77,6 +77,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          outputs: |
+            type=image,name=target,annotation-index.org.opencontainers.image.description=LJ Metrics Test app
+            type=image,name=target,annotation-index.org.opencontainers.image.source=https://github.com/jimmydoh/lj-metrics
+            type=image,name=target,annotation-index.org.opencontainers.image.unlicense=Unlicense
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
