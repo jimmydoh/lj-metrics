@@ -1,4 +1,4 @@
-name: Build Dev
+name: dev Build
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -58,7 +58,7 @@ jobs:
 
       - name: Test build
         run: |
-          docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test   
+          docker run --env PING_COUNT=1 --env PING_INTERVAL=1 --env PING_DESTINATION=localhost --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test 
 
       - name: Build final images
         id: build-and-push
