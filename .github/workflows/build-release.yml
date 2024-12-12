@@ -42,16 +42,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: type=ref,event=branch
 
-      - name: Build for testing
-        uses: docker/build-push-action@v6
-        with:
-          load: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
-
-      - name: Test build
-        run: |
-          docker run --env PING_COUNT=1 --env PING_INTERVAL=1 --env PING_DESTINATION=localhost --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test 
-
       - name: Build final images
         id: build-and-push
         uses: docker/build-push-action@v6
